@@ -1,4 +1,11 @@
-from database.database import Database
+from flask import Flask
+from database import Database
+
+flask_app = Flask(__name__)
+
+@flask_app.route("/")
+def hello_world():
+    return "<p>Hello, world!</p>"
 
 item_db = Database()
 
