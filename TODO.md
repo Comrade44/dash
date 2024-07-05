@@ -1,8 +1,1 @@
-- Todo list database
-- Flask frontend
-- Error handling
-- Documentation
-- Testing
-- Convert list number to foreign key
-- Update database to use Alembic
-- User login system
+
