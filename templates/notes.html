@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Notes{% endblock %}
+{% block content %}
+<form action="/update_notes" method="POST">
+<table border="1">
+    <tr>
+        <th>Note</th>
+        <th>Completed?</th>
+    </tr>
+    {% for note in notes %}
+    <tr>
+        <td><input name="{{note.id}}_content" type="text" value="{{ note.content }}"></td>
+        {% if note.completed == true %}
+        <td><input name="{{note.id}}_completed" type="checkbox" checked></td>
+        {% else %}
+        <td><input name="{{note.id}}_completed" type="checkbox"></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+<button id="submit" type="submit">Submit</button>
+</form>
+{% endblock %}
