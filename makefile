@@ -7,4 +7,4 @@ install: requirements.txt
 	./venv/bin/pip install -r requirements.txt
 
 run: venv/bin
-	./venv/bin/flask --app app run
+	./venv/bin/flask --app app --debug run

@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 {% block title %}Index{% endblock %}
 {% block content %}
-<h1>Hello, world!</h1>
+<h1>List Of Todo Items</h1>
+
+<form action="/add" method="post">
+    <div>
+        <label for="content">New item: </label>
+        <input type="text" name="content" placeholder="Add new todo item...">
+        <button type="submit">Add</button>
+    </div>
+</form>
+
+{% for todo in todo_list %}
+<form action="/update" method="post">
+<p>
+    <input type="text" name="content" value="{{ todo.content }}">&nbsp;
+    {% if todo.complete == True %}
+        <input type="checkbox" name="complete" checked>&nbsp;
+    {% else %}
+        <input type="checkbox" name="complete">&nbsp;
+    {% endif %}
+    <button type="submit" name="id" value="{{ todo.id }}">Update</button>
+</p>
+</form>
+{% endfor %}
+
 {% endblock %}
