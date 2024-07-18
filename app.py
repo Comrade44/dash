@@ -39,11 +39,18 @@ def add():
 
 @flask_app.route("/update", methods=["POST"])
 def update():
-    todo = Todo.query.filter_by(id=request.form.get("id")).first()
+    todo = Todo.query.filter_by(id=request.form.get("update")).first()
     todo.content  = request.form.get("content")
     if request.form.get("complete") == "on":
         todo.complete = True
     else:
         todo.complete = False
+    db.session.commit()
+    return redirect(url_for("index"))
+
+@flask_app.route("/delete", methods=["POST"])
+def delete():
+    todo = (Todo.query.filter_by(id=request.form.get("delete")).first())
+    db.session.delete(todo)
     db.session.commit()
     return redirect(url_for("index"))

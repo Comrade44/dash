@@ -20,7 +20,8 @@
     {% else %}
         <input type="checkbox" name="complete">&nbsp;
     {% endif %}
-    <button type="submit" name="id" value="{{ todo.id }}">Update</button>
+    <button type="submit" name="update" value="{{ todo.id }}">Update</button>
+    <button type="submit" name="delete" value="{{ todo.id }}" formaction="/delete" formmethod="post">Delete</button>
 </p>
 </form>
 {% endfor %}
